@@ -50,10 +50,6 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	 -->
 	<!-- 将SessionFactory配置到spring容器中 -->
-	<!-- 加载配置方案1:仍然使用外部的hibernate.cfg.xml配置信息 -->
-	<!-- <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
-		<property name="configLocation" value="classpath:hibernate.cfg.xml" ></property>
-	</bean> -->
 	<!-- 加载配置方案2:在spring配置中放置hibernate配置信息 -->
 	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
 		<!-- 将连接池注入到sessionFactory, hibernate会通过连接池获得连接 -->
@@ -77,7 +73,10 @@
 		<!-- 引入orm元数据,指定orm元数据所在的包路径,spring会自动读取包中的所有配置 -->
 		<property name="mappingDirectoryLocations"  value="classpath:cn/wutest/domain" ></property>
 	</bean>
-	
+	<bean >
+       
+    </bean>
+    
 	<!-- action -->
 	<!-- 注意:Action对象作用范围一定是多例的.这样才符合struts2架构 -->
 	<bean name="userAction" class="cn.wutest.web.action.UserAction" scope="prototype" >
